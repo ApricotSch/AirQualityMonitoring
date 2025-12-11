@@ -61,7 +61,7 @@ Clone repository ini dan install library Python yang dibutuhkan:
 
 ```
 git clone https://github.com/ApricotSch/AirQualityMonitoring.git
-cd IAQ_Monitoring_System
+cd AirQualityMonitoring
 pip install -r requirements.txt
 ```
 
