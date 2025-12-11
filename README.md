@@ -3,12 +3,12 @@
 Sistem pemantauan kualitas udara dalam ruangan berbasis IoT dan Batch Processing. Proyek ini dirancang untuk memantau parameter kesehatan udara kantor seperti CO2, Temperatur, Kelembapan, dan PM2.5 guna menjaga produktivitas dan kesehatan penghuni ruangan.
 
 ## 📋 Daftar Isi
-- [Latar Belakang](#-latar-belakang)
-- [Arsitektur Sistem](#-arsitektur-sistem)
-- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Struktur Folder](#-struktur-folder)
-- [Cara Instalasi & Menjalankan](#-cara-instalasi--menjalankan)
-- [Konfigurasi Grafana](#-konfigurasi-grafana)
+- [📖 Latar Belakang]
+- [🏗 Arsitektur Sistem]
+- [🛠 Teknologi yang Digunakan]
+- [📂 Struktur Folder]
+- [🖥️ Cara Instalasi & Menjalankan]
+- [📊 Konfigurasi Grafana]
 
 ## 📖 Latar Belakang
 Kualitas udara dalam ruangan (IAQ) memiliki dampak besar terhadap kesehatan dan kognitif. Kadar CO2 > 1000 ppm dapat menurunkan fokus kerja. Sistem ini menggunakan pendekatan **Batch Processing** (ETL) karena perubahan kualitas udara kantor cenderung lambat, sehingga streaming real-time tidak diwajibkan, membuat sistem lebih efisien sumber daya.
@@ -50,7 +50,8 @@ IAQ_Monitoring_System/
     └── config/
         └── mosquitto.conf
 ```
-## 🖥️ Cara Instalasi & Menjalankan
+
+## 🖥️ installasi
 **Prasyarat**
 * Python 3.x terinstall.
 * Docker & Docker Desktop terinstall dan berjalan.
@@ -59,7 +60,7 @@ IAQ_Monitoring_System/
 Clone repository ini dan install library Python yang dibutuhkan:
 
 ```
-git clone [https://github.com/username-kamu/nama-repo.git](https://github.com/username-kamu/nama-repo.git)
+git clone https://github.com/ApricotSch/AirQualityMonitoring.git
 cd IAQ_Monitoring_System
 pip install -r requirements.txt
 ```
