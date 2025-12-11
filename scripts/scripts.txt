@@ -1,0 +1,1 @@
+This is Scripts for Data producer, Collector, and Agregation before sent to PostgreSQL
