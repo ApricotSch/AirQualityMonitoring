@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # 1. MQTT BROKER [cite: 33, 34]
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto_broker
+    ports:
+      - "1883:1883"     # Port untuk sensor kirim data
+      - "9001:9001"     # Port untuk dashboard web (opsional)
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  # 2. DATABASE (PostgreSQL) [cite: 48, 49]
+  postgres:
+    image: postgres:13
+    container_name: db_kantor
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: iaq_monitoring
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 3. DASHBOARD (Grafana) [cite: 52, 53]
+  grafana:
+    image: grafana/grafana
+    container_name: grafana_dashboard
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - grafana_data:/var/lib/grafana
+
+volumes:
+  postgres_data:
+  grafana_data:
