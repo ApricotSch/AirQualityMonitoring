@@ -91,24 +91,25 @@ python scripts/sensor_dummy.py
 ```
 
 ## 📊 Konfigurasi Grafana
-* Buka browser: http://localhost:3000
-*Login default: admin / admin.
-*Masuk ke Connections -> Add Data Source -> PostgreSQL.
-*Isi konfigurasi berikut (sesuai docker-compose):
-*Host: postgres:5432 (PENTING: Jangan pakai localhost)
-*Database: iaq_monitoring
-*User: admin
-*Password: password123
-*TLS/SSL Mode: disable
+1. Koneksi Database
+* **Buka browser**: `http://localhost:3000`
+* **Login default**: `admin` / `admin`.
+* **Masuk ke Connections -> Add Data Source -> PostgreSQL.**
+* **Isi konfigurasi berikut (sesuai docker-compose):**
+  * **Host**: `postgres:5432` (PENTING: Jangan pakai localhost)
+  * **Database**: `iaq_monitoring`
+  * **User**: `admin`
+  * **Password**: `password123`
+  * **TLS/SSL Mode**: `disable`
+* klik **Save & Test**.
 
-## Contoh Query Dashboard
-Untuk menampilkan grafik tren CO2 (Time Series):
-```
-SELECT
-  timestamp - INTERVAL '7 hour' AS "time",
-  co2,
-  room_id
-FROM daily_logs
-WHERE room_id IN ('Room_A', 'Room_B')
-ORDER BY timestamp ASC
-```
+2. Import Dashboard Otomatis
+Agar tidak perlu membuat grafik manual, gunakan file JSON yang sudah disediakan:
+
+* Buka file GrafanaJson.json yang ada di repository ini, lalu Copy seluruh isinya.
+* Di Grafana, klik menu Dashboards -> New -> Import.
+* Paste kode JSON ke dalam kotak Import via panel json.
+* Klik Load.
+* Pada bagian Select a PostgreSQL data source, pilih data source yang baru saja dibuat.
+* Klik Import.
+* Dashboard monitoring siap digunakan! 🚀
