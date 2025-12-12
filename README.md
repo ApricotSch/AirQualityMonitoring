@@ -2,6 +2,12 @@
 
 Sistem pemantauan kualitas udara dalam ruangan berbasis IoT dan Batch Processing. Proyek ini dirancang untuk memantau parameter kesehatan udara kantor seperti CO2, Temperatur, Kelembapan, dan PM2.5 guna menjaga produktivitas dan kesehatan penghuni ruangan.
 
+## Anggota Kelompok
+- Muhammad Farkhan Fadillah 235150300111016
+- Arbi Yusuf Ramanda 235150300111022
+- Alif Eriksandi Agustino 235150300111023
+- Maulana Ihsan Maggio 235150301111025
+
 ## 📋 Daftar Isi
 - [📖 Latar Belakang]
 - [🏗 Arsitektur Sistem]
