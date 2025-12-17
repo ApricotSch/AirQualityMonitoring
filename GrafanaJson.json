@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 0,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -140,38 +140,8 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  pm25 AS \"dust Room B\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_B'\r\nORDER BY timestamp ASC",
+          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  pm25,\r\n  room_id\r\nFROM daily_logs\r\nORDER BY timestamp ASC",
           "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "iaq_monitoring",
-          "datasource": {
-            "type": "grafana-postgresql-datasource",
-            "uid": "cf6rhvkayk1s0e"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  pm25 AS \"dust Room A\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_A'\r\nORDER BY timestamp ASC",
-          "refId": "B",
           "sql": {
             "columns": [
               {
@@ -192,6 +162,20 @@
         }
       ],
       "title": "Dust",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "room_id"
+            ],
+            "keepFields": true,
+            "naming": {
+              "asLabels": true
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -313,38 +297,8 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  humidity AS \"humidity Room B\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_B'\r\nORDER BY timestamp ASC",
+          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  humidity,\r\n  room_id\r\nFROM daily_logs\r\nORDER BY timestamp ASC",
           "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "iaq_monitoring",
-          "datasource": {
-            "type": "grafana-postgresql-datasource",
-            "uid": "cf6rhvkayk1s0e"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  humidity AS \"humidity Room A\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_A'\r\nORDER BY timestamp ASC",
-          "refId": "B",
           "sql": {
             "columns": [
               {
@@ -365,6 +319,17 @@
         }
       ],
       "title": "Humidity",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "room_id"
+            ],
+            "keepFields": false
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -490,38 +455,8 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  co2 AS \"CO2 Room A\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_A'\r\nORDER BY timestamp ASC",
+          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  co2,\r\n  room_id\r\nFROM daily_logs\r\nORDER BY timestamp ASC",
           "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "iaq_monitoring",
-          "datasource": {
-            "type": "grafana-postgresql-datasource",
-            "uid": "cf6rhvkayk1s0e"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  co2 AS \"CO2 Room B\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_B'\r\nORDER BY timestamp ASC",
-          "refId": "B",
           "sql": {
             "columns": [
               {
@@ -542,6 +477,17 @@
         }
       ],
       "title": "CO2",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "room_id"
+            ],
+            "keepFields": false
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -663,38 +609,8 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  temperature AS \"temperature Room B\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_B'\r\nORDER BY timestamp ASC",
+          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  temperature,\r\n  room_id\r\nFROM daily_logs\r\nORDER BY timestamp ASC",
           "refId": "A",
-          "sql": {
-            "columns": [
-              {
-                "parameters": [],
-                "type": "function"
-              }
-            ],
-            "groupBy": [
-              {
-                "property": {
-                  "type": "string"
-                },
-                "type": "groupBy"
-              }
-            ],
-            "limit": 50
-          }
-        },
-        {
-          "dataset": "iaq_monitoring",
-          "datasource": {
-            "type": "grafana-postgresql-datasource",
-            "uid": "cf6rhvkayk1s0e"
-          },
-          "editorMode": "code",
-          "format": "table",
-          "hide": false,
-          "rawQuery": true,
-          "rawSql": "SELECT\r\n  timestamp - INTERVAL '7 hour' AS \"time\",\r\n  temperature AS \"temperature Room A\"\r\nFROM daily_logs\r\nWHERE room_id = 'Room_A'\r\nORDER BY timestamp ASC",
-          "refId": "B",
           "sql": {
             "columns": [
               {
@@ -715,7 +631,121 @@
         }
       ],
       "title": "Temperature",
+      "transformations": [
+        {
+          "id": "partitionByValues",
+          "options": {
+            "fields": [
+              "room_id"
+            ],
+            "keepFields": false
+          }
+        }
+      ],
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-postgresql-datasource",
+        "uid": "cf6rhvkayk1s0e"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "Normal": {
+                  "color": "green",
+                  "index": 0,
+                  "text": "Normal"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "status_ruangan"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 327
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": true
+      },
+      "pluginVersion": "12.3.0",
+      "targets": [
+        {
+          "dataset": "iaq_monitoring",
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT DISTINCT ON (room_id)\r\n  room_id,\r\n  status_ruangan,\r\n  timestamp\r\nFROM daily_logs\r\nORDER BY room_id, timestamp DESC",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Status Ruangan",
+      "type": "table"
     }
   ],
   "preload": false,
@@ -725,12 +755,12 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Tren Kualitas Udara (Room A)",
   "uid": "adlbchq",
-  "version": 17
+  "version": 32
 }
