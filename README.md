@@ -22,7 +22,7 @@ Kualitas udara dalam ruangan (IAQ) memiliki dampak besar terhadap kesehatan dan 
 ## 🏗 Arsitektur Sistem
 Sistem ini mensimulasikan alur data *End-to-End* dari sensor hingga visualisasi:
 
-1.  **Data Producer (Sensor Dummy):** Python script menghasilkan data dummy untuk beberapa ruangan (`Room_A`, `Room_B`) dan mengirimkannya via protocol **MQTT**.
+1.  **Data Producer (Sensor Dummy):** Python script menghasilkan data dummy untuk beberapa ruangan (`Room_A`, `Room_B`, `Room_C`, `Room_D`, `Room_E`) dan mengirimkannya via protocol **MQTT**.
 2.  **Broker (Mosquitto):** Menampung pesan dari sensor.
 3.  **Buffer (Subscriber):** Script Python yang "mendengarkan" broker dan menyimpan data sementara ke file CSV (`temp_data.csv`).
 4.  **ETL Processor:** Batch job (dijadwalkan tiap 15 menit/1 menit demo) yang melakukan:
