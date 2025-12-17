@@ -8,11 +8,11 @@ from datetime import datetime
 BROKER = "localhost"
 PORT = 1883
 
-ROOMS = ["Room_A", "Room_B"] 
+ROOMS = ["Room_A", "Room_B", "Room_C", "Room_D", "Room_E"] 
 
 def generate_sensor_data(room_name):
 
-    temp_base = 25.0 if room_name == "Room_A" else 28.0
+    temp_base = 18.0 if room_name == "Room_A" else 23.0
     
     data = {
         "room_id": room_name,

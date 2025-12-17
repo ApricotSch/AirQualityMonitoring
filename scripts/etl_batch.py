@@ -46,15 +46,32 @@ def run_etl_process():
         agg_df['co2'] = agg_df['co2'].astype(int)
 
         def get_status(row):
-            notes = []
+            notes = [] # Siapkan keranjang kosong
+            
+            # Cek 1: CO2
+            # Pakai 'if', JANGAN pakai 'elif'
             if row['co2'] > 1000:
                 notes.append("Ventilasi Buruk")
+                
+            # Cek 2: Humidity
+            # Pakai 'if' lagi, biar dia ngecek ini juga walau CO2 sudah error
             if row['humidity'] < 30:
                 notes.append("Udara Kering")
+
+            if row['humidity'] > 60:
+                notes.append("Udara Lembab")
+                
+            # Cek 3: PM2.5 (Sesuai update WHO kemarin > 15)
             if row['pm25'] > 15:
-                notes.append("Tidak Sehat")
+                notes.append("Udara Berdebu")
             
-            return ", ".join(notes) if notes else "Normal"
+            # GABUNGKAN HASILNYA
+            # Kalau notes ada isinya (misal 2 error), gabung pakai koma.
+            # Contoh output: "Ventilasi Buruk, Tidak Sehat"
+            if len(notes) > 0:
+                return ", ".join(notes)
+            else:
+                return "Normal"
 
         agg_df['status_ruangan'] = agg_df.apply(get_status, axis=1)
 
